@@ -1,5 +1,6 @@
 from __future__ import print_function
 import tensorflow as tf
+import tfdeploy as td
 
 import argparse
 import time
@@ -132,8 +133,12 @@ def train(args):
                     checkpoint_path = os.path.join(args.save_dir, 'model.ckpt')
                     saver.save(sess, checkpoint_path,
                                global_step=e * data_loader.num_batches + b)
-                    print("model saved to {}".format(checkpoint_path))
 
+                    # Save model using tfdepoly
+                   # model = td.Model()
+                   # model.add(y, sess) # y and all its ops and related tensors are added recursively
+                   # model.save("model.pkl")
+                    print("model saved to {}".format(checkpoint_path))
 
 if __name__ == '__main__':
     main()
